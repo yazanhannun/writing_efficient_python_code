@@ -132,14 +132,56 @@ list(range(2,11,2))
 
 [2, 4, 6, 8, 10]
 '''
-# Create a range object that goes from 0 to 5
-nums = range(0, 6)
-print(type(nums))
+# # Create a range object that goes from 0 to 5
+# nums = range(0, 6)
+# print(type(nums))
 
-# Convert nums to a list
-nums_list = list(nums)
-print(nums_list)
+# # Convert nums to a list
+# nums_list = list(nums)
+# print(nums_list)
 
-# Create a new list of odd numbers from 1 to 11 by unpacking a range object
-nums_list2 = [*range(1,12,2)]
-print(nums_list2)
+# # Create a new list of odd numbers from 1 to 11 by unpacking a range object
+# nums_list2 = [*range(1,12,2)]
+# print(nums_list2)
+
+'''
+Nicely done! Notice that using Python's range() function allows you to create a range object 
+of numbers without explicitly typing them out. You can convert the range object into a list 
+by using the list() function or by unpacking it into a list using the star character (*). Cool!'''
+
+#----------------------------Built-in practice: enumerate()----------------------------#
+'''
+In this exercise, you'll practice using Python's built-in function enumerate(). This function is 
+useful for obtaining an indexed list. For example, suppose you had a list of people that arrived 
+at a party you are hosting. The list is ordered by arrival (Jerry was the first to arrive, followed 
+by Kramer, etc.):
+
+names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman']
+
+If you wanted to attach an index representing a person's arrival order, you could use the following 
+for loop:
+
+indexed_names = []
+for i in range(len(names)):
+    index_name = (i, names[i])
+    indexed_names.append(index_name)
+
+[(0,'Jerry'),(1,'Kramer'),(2,'Elaine'),(3,'George'),(4,'Newman')]
+But, that's not the most efficient solution. Let's explore how to use enumerate() to make this more 
+efficient.'''
+
+# Rewrite the for loop to use enumerate
+names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman']
+indexed_names = []
+for i,name in enumerate(names):
+    index_name = (i,name)
+    indexed_names.append(index_name) 
+print(indexed_names)
+
+# Rewrite the above for loop using list comprehension
+indexed_names_comp = [(i,name) for i,name in enumerate(names)]
+print(indexed_names_comp)
+
+# Unpack an enumerate object with a starting index of one
+indexed_names_unpack = [*enumerate(names, start=1)]
+print(indexed_names_unpack)
