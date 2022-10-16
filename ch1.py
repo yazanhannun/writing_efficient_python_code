@@ -171,17 +171,51 @@ But, that's not the most efficient solution. Let's explore how to use enumerate(
 efficient.'''
 
 # Rewrite the for loop to use enumerate
+# names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman']
+# indexed_names = []
+# for i,name in enumerate(names):
+#     index_name = (i,name)
+#     indexed_names.append(index_name) 
+# print(indexed_names)
+
+# # Rewrite the above for loop using list comprehension
+# indexed_names_comp = [(i,name) for i,name in enumerate(names)]
+# print(indexed_names_comp)
+
+# # Unpack an enumerate object with a starting index of one
+# indexed_names_unpack = [*enumerate(names, start=1)]
+# print(indexed_names_unpack)
+
+'''
+Awesome! Using Python's built-in enumerate() function allows you to create an index for each 
+item in the object you give it. You can use list comprehension, or even unpack the enumerate 
+object directly into a list, to write a nice simple one-liner.'''
+
+#----------------------------Built-in practice: map()----------------------------#
+'''
+In this exercise, you'll practice using Python's built-in map() function to apply a function to 
+every element of an object. Let's look at a list of party guests:
+
 names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman']
-indexed_names = []
-for i,name in enumerate(names):
-    index_name = (i,name)
-    indexed_names.append(index_name) 
-print(indexed_names)
+Suppose you wanted to create a new list (called names_uppercase) that converted all the letters in 
+each name to uppercase. you could accomplish this with the below for loop:
 
-# Rewrite the above for loop using list comprehension
-indexed_names_comp = [(i,name) for i,name in enumerate(names)]
-print(indexed_names_comp)
+names_uppercase = []
 
-# Unpack an enumerate object with a starting index of one
-indexed_names_unpack = [*enumerate(names, start=1)]
-print(indexed_names_unpack)
+for name in names:
+  names_uppercase.append(name.upper())
+
+['JERRY', 'KRAMER', 'ELAINE', 'GEORGE', 'NEWMAN']'''
+
+# Use map to apply str.upper to each element in names
+names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman']
+names_map  = map(str.upper, names)
+
+# Print the type of the names_map
+print(type(names_map))
+
+# Unpack names_map into a list
+names_uppercase = [* names_map]
+
+# Print the list created above
+print(names_uppercase)
