@@ -230,20 +230,69 @@ performed on all elements of an object at once.
 A two-dimensional numpy array has been loaded into your session (called nums) and printed 
 into the console for your convenience. numpy has been imported into your session as np.'''
 
+# import numpy as np
+# nums = np.array([[ 1, 2, 3, 4, 5],[ 6, 7, 8, 9, 10]])
+
+# # Print second row of nums
+# print(nums[1,:])
+
+# # Print all elements of nums that are greater than six
+# print(nums[nums > 6])
+
+# # Double every element of nums
+# nums_dbl = nums * 2
+# print(nums_dbl)
+
+# # Replace the third column of nums
+# nums[:,2] = nums[:,2] + 1
+# print(nums)
+
+
+#----------------------------Bringing it all together: Festivus!----------------------------#
+'''
+In this exercise, you will be throwing a party—a Festivus if you will!
+
+You have a list of guests (the names list). Each guest, for whatever reason, has decided to show 
+up to the party in 10-minute increments. For example, Jerry shows up to Festivus 10 minutes into 
+the party's start time, Kramer shows up 20 minutes into the party, and so on and so forth.
+
+We want to write a few simple lines of code, using the built-ins we have covered, to welcome each 
+of your guests and let them know how many minutes late they are to your party. Note that numpy has 
+been imported into your session as np and the names list has been loaded as well.
+
+Let's welcome your guests!'''
+
 import numpy as np
-nums = np.array([[ 1, 2, 3, 4, 5],[ 6, 7, 8, 9, 10]])
+names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman']
 
-# Print second row of nums
-print(nums[1,:])
+# Create a list of arrival times
+arrival_times = [*range(10,60,10)]
 
-# Print all elements of nums that are greater than six
-print(nums[nums > 6])
+# Convert arrival_times to an array and update the times
+arrival_times_np = np.array(arrival_times)
+new_times = arrival_times_np - 3
 
-# Double every element of nums
-nums_dbl = nums * 2
-print(nums_dbl)
+# Use list comprehension and enumerate to pair guests to new times
+guest_arrivals = [(names[i],time) for i,time in enumerate(new_times)]
 
-# Replace the third column of nums
-nums[:,2] = nums[:,2] + 1
-print(nums)
+# Map the welcome_guest function to each (guest,time) pair  
+def welcome_guest(x):
+    l=list()
+    for i in x:
+        l = f"Welcome to Festivus {i[0]}... You're {i[1]} min late."
+        return l
 
+welcome_map = map(welcome_guest, guest_arrivals)
+
+guest_welcomes = [*welcome_map]
+print(*welcome_map, sep='\n')
+
+# guest_arrivals=[('Jerry', 7), ('Kramer', 17), ('Elaine', 27), ('George', 37), ('Newman', 47)]
+
+# def w(guest_arrivals):
+#     arrival_times = [time for name, time in guest_arrivals]
+#     names = [name for name, time in guest_arrivals]
+#     return arrival_times, names
+
+# print(w(guest_arrivals))
+# # print(guest_arrivals[0,0])
