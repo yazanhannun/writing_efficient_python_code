@@ -207,15 +207,43 @@ for name in names:
 
 ['JERRY', 'KRAMER', 'ELAINE', 'GEORGE', 'NEWMAN']'''
 
-# Use map to apply str.upper to each element in names
-names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman']
-names_map  = map(str.upper, names)
+# # Use map to apply str.upper to each element in names
+# names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman']
+# names_map  = map(str.upper, names)
 
-# Print the type of the names_map
-print(type(names_map))
+# # Print the type of the names_map
+# print(type(names_map))
 
-# Unpack names_map into a list
-names_uppercase = [* names_map]
+# # Unpack names_map into a list
+# names_uppercase = [* names_map]
 
-# Print the list created above
-print(names_uppercase)
+# # Print the list created above
+# print(names_uppercase)
+
+#----------------------------The power of NumPy arrays----------------------------#
+#----------------------------Practice with NumPy arrays----------------------------#
+'''
+Let's practice slicing numpy arrays and using NumPy's broadcasting concept. Remember, 
+broadcasting refers to a numpy array's ability to vectorize operations, so they are 
+performed on all elements of an object at once.
+
+A two-dimensional numpy array has been loaded into your session (called nums) and printed 
+into the console for your convenience. numpy has been imported into your session as np.'''
+
+import numpy as np
+nums = np.array([[ 1, 2, 3, 4, 5],[ 6, 7, 8, 9, 10]])
+
+# Print second row of nums
+print(nums[1,:])
+
+# Print all elements of nums that are greater than six
+print(nums[nums > 6])
+
+# Double every element of nums
+nums_dbl = nums * 2
+print(nums_dbl)
+
+# Replace the third column of nums
+nums[:,2] = nums[:,2] + 1
+print(nums)
+
