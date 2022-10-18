@@ -275,24 +275,15 @@ new_times = arrival_times_np - 3
 # Use list comprehension and enumerate to pair guests to new times
 guest_arrivals = [(names[i],time) for i,time in enumerate(new_times)]
 
+
 # Map the welcome_guest function to each (guest,time) pair  
 def welcome_guest(x):
-    l=list()
     for i in x:
-        l = f"Welcome to Festivus {i[0]}... You're {i[1]} min late."
-        return l
+        s=f"Welcome to Festivus {x[0]}... You're {x[1]} min late."
+        return s
 
 welcome_map = map(welcome_guest, guest_arrivals)
-
 guest_welcomes = [*welcome_map]
-print(*welcome_map, sep='\n')
+print(*guest_welcomes, sep='\n')
 
-# guest_arrivals=[('Jerry', 7), ('Kramer', 17), ('Elaine', 27), ('George', 37), ('Newman', 47)]
 
-# def w(guest_arrivals):
-#     arrival_times = [time for name, time in guest_arrivals]
-#     names = [name for name, time in guest_arrivals]
-#     return arrival_times, names
-
-# print(w(guest_arrivals))
-# # print(guest_arrivals[0,0])
